@@ -2,7 +2,6 @@ package br.com.fiap.savemo.entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -13,7 +12,7 @@ public class HiredAdvertisement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ad_hired_id", nullable = false)
-    private Long advertisementHiredId;
+    private Long hiredAdvertisementId;
 
     @ManyToOne
     @JoinColumn(name = "ad_published_id")
@@ -34,12 +33,12 @@ public class HiredAdvertisement {
     public HiredAdvertisement() {
     }
 
-    public Long getAdvertisementHiredId() {
-        return advertisementHiredId;
+    public Long getHiredAdvertisementId() {
+        return hiredAdvertisementId;
     }
 
-    public void setAdvertisementHiredId(Long advertisementHiredId) {
-        this.advertisementHiredId = advertisementHiredId;
+    public void setHiredAdvertisementId(Long hiredAdvertisementId) {
+        this.hiredAdvertisementId = hiredAdvertisementId;
     }
 
     public PublishedAdvertisement getPublishedAdvertisement() {

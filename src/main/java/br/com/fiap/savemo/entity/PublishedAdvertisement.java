@@ -9,7 +9,7 @@ public class PublishedAdvertisement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ad_published_id", nullable = false)
-    private Long advertisementPublishedId;
+    private Long publishedAdvertisementId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -25,12 +25,12 @@ public class PublishedAdvertisement {
     public PublishedAdvertisement() {
     }
 
-    public Long getAdvertisementPublishedId() {
-        return advertisementPublishedId;
+    public Long getPublishedAdvertisementId() {
+        return publishedAdvertisementId;
     }
 
-    public void setAdvertisementPublishedId(Long advertisementPublishedId) {
-        this.advertisementPublishedId = advertisementPublishedId;
+    public void setPublishedAdvertisementId(Long publishedAdvertisementId) {
+        this.publishedAdvertisementId = publishedAdvertisementId;
     }
 
     public String getAdvertisementTitle() {
