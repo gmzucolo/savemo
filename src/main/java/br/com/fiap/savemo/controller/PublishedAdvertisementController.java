@@ -28,4 +28,19 @@ public class PublishedAdvertisementController {
     public PublishedAdvertisement savePublishedAdvertisement(@RequestBody PublishedAdvertisement publishedAdvertisement) {
         return publishedAdvertisementRepository.save(publishedAdvertisement);
     }
+
+    @PutMapping(value = "/{publishedAdvertisementId}")
+    public PublishedAdvertisement updatePublishedAdvertisement(@PathVariable Long publishedAdvertisementId, @RequestBody PublishedAdvertisement publishedAdvertisement) {
+        PublishedAdvertisement publishedAdvertisementToUpdate = publishedAdvertisementRepository.findById(publishedAdvertisementId).get();
+        publishedAdvertisementToUpdate.setAdvertisementTitle(publishedAdvertisement.getAdvertisementTitle());
+        publishedAdvertisementToUpdate.setAdvertisementDescription(publishedAdvertisement.getAdvertisementDescription());
+        publishedAdvertisementToUpdate.setAdvertisementValue(publishedAdvertisement.getAdvertisementValue());
+        publishedAdvertisementToUpdate.setPublisherUser(publishedAdvertisement.getPublisherUser());
+        return publishedAdvertisementToUpdate;
+    }
+
+    @DeleteMapping(value = "/{publishedAdvertisementId}")
+    public void deletePublishedAdvertisement(@PathVariable Long publishedAdvertisementId) {
+        publishedAdvertisementRepository.deleteById(publishedAdvertisementId);
+    }
 }

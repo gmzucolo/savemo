@@ -29,5 +29,17 @@ public class HiredAdvertisementController {
         return hiredAdvertisementRepository.save(hiredAdvertisement);
     }
 
+    @PutMapping(value = "/{hiredAdvertisementId}")
+    public HiredAdvertisement updateHiredAdvertisement(@PathVariable Long hiredAdvertisementId, @RequestBody HiredAdvertisement hiredAdvertisement) {
+        HiredAdvertisement hiredAdvertisementToUpdate = hiredAdvertisementRepository.findById(hiredAdvertisementId).get();
+        hiredAdvertisementToUpdate.setAdvertisement(hiredAdvertisement.getAdvertisement());
+        hiredAdvertisementToUpdate.setHiredDate(hiredAdvertisement.getHiredDate());
+        hiredAdvertisementToUpdate.setHiringUsers(hiredAdvertisement.getHiringUsers());
+        return hiredAdvertisementToUpdate;
+    }
 
+    @DeleteMapping(value = "/{hiredAdvertisementId}")
+    public void deleteHiredAdvertisement(@PathVariable Long hiredAdvertisementId) {
+        hiredAdvertisementRepository.deleteById(hiredAdvertisementId);
+    }
 }

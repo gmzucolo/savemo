@@ -28,4 +28,19 @@ public class UserController {
     public User saveUser(@RequestBody User user) {
         return userRepository.save(user);
     }
+
+    @PutMapping(value = "/{userId}")
+    public User updateUser(@PathVariable Long userId, @RequestBody User user) {
+        User userToUpdate = userRepository.findById(userId).get();
+        userToUpdate.setUserName(user.getUserName());
+        userToUpdate.setUserPassword(user.getUserPassword());
+        userToUpdate.setUserPhone(user.getUserPhone());
+        userToUpdate.setUserEmail(user.getUserEmail());
+        return userToUpdate;
+    }
+
+    @DeleteMapping(value = "/{userId}")
+    public void deleteUser(@PathVariable Long userId) {
+        userRepository.deleteById(userId);
+    }
 }
